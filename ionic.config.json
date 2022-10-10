@@ -1,0 +1,7 @@
+{
+  "name": "CercanosFilms",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
