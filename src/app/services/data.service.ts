@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { WhereFilterOp, increment } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, first } from 'rxjs/operators';
 
 export interface Filter {
     name: string;
     value: any;
-    comparator: WhereFilterOp;
+    comparator: any;
 }
 
 @Injectable({
@@ -56,6 +55,21 @@ export class DataService {
         let ref = this.db.collection(plink).doc(id);
         return ref.valueChanges().pipe(first()).toPromise();
     }
+
+    public upDoc(plink, data, id, n?) {
+        console.log(plink, data, id,n);
+    
+        let ref = this.db.collection(plink);
+        if (id) {
+          if (n)
+            return ref.doc(id).set(data);
+          else
+            return ref.doc(id).update(data);
+        }
+        else {
+          return ref.add(data).then((a: any) => a);
+        }
+      }
 
 
 }
