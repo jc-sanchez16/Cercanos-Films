@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cercanos Film
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Cercanos Film</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<div class="container">
+  <h1>Bienvenido a Cercanos Films {{idCatch}}</h1>
+  <p>Elige una localidad:</p>
+  <div *ngIf="flag">
+    <select [(ngModel)]="selected" (change)="cathcData()"name="localidad" id="localidad" >
+      <option [value]="localidad" *ngFor="let localidad of localidades">{{localidad}}</option>
+    </select>
+  </div>
+  <div *ngIf="movieFlag" class="movies">
+    <div class="movie" *ngFor="let movie of movies">
+      <ion-img class="imgMovie"src={{movie.foto}}></ion-img>
+      <ion-label>{{movie.nombre}}</ion-label>
+      <br>
+      <ion-label> Horarios: </ion-label>
+      <select name="" id="localidad">
+            <option class="horarios" [value]="hora" *ngFor="let hora of movie.horarios">{{hora}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
